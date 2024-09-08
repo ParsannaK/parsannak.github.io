@@ -353,6 +353,12 @@ section {
   font-size: 16px;
 }
 
+.elfsight-app-aaf14a2c-5d1d-4905-9dfc-be1dc0635677 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media(max-width:1285px) {
   #menu-icon {
     display: block;
