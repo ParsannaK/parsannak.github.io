@@ -3,6 +3,7 @@ import { AboutSection } from './components/AboutSection';
 import { ContactSection } from './components/ContactSection';
 import { ExperienceSection } from './components/ExperienceSection';
 import { HeroSection } from './components/HeroSection';
+import { MatrixRain } from './components/MatrixRain';
 import { Navbar } from './components/Navbar';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ResumeSection } from './components/ResumeSection';
@@ -26,6 +27,7 @@ function App(): JSX.Element {
 
   return (
     <div className="app-shell">
+      <MatrixRain />
       <div className="starfield starfield-a" aria-hidden="true" />
       <div className="starfield starfield-b" aria-hidden="true" />
       <div className="ambient ambient-a" aria-hidden="true" />
