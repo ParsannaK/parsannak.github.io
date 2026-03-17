@@ -27,7 +27,7 @@ function ReactiveCluster(): JSX.Element {
   return (
     <group ref={rootRef}>
       <Float speed={1.8} rotationIntensity={0.7} floatIntensity={1.1}>
-        <mesh ref={coreRef} scale={1.65}>
+        <mesh ref={coreRef} scale={1.28}>
           <icosahedronGeometry args={[1.3, 14]} />
           <MeshDistortMaterial
             color="#69f2ff"
@@ -42,7 +42,7 @@ function ReactiveCluster(): JSX.Element {
       </Float>
 
       <Float speed={1.2} rotationIntensity={1.4} floatIntensity={0.5}>
-        <mesh ref={orbitRef} scale={2.45}>
+        <mesh ref={orbitRef} scale={2.05}>
           <torusKnotGeometry args={[0.95, 0.14, 180, 28]} />
           <meshStandardMaterial
             color="#ff9e78"
@@ -56,20 +56,20 @@ function ReactiveCluster(): JSX.Element {
       </Float>
 
       <Float speed={2.4} rotationIntensity={1.6} floatIntensity={1.4}>
-        <mesh position={[1.9, 1.1, -0.7]} scale={0.34}>
+        <mesh position={[1.6, 0.95, -0.7]} scale={0.28}>
           <sphereGeometry args={[1, 24, 24]} />
           <meshStandardMaterial color="#84f4ff" emissive="#53b8ff" emissiveIntensity={0.7} />
         </mesh>
       </Float>
 
       <Float speed={2.1} rotationIntensity={1.4} floatIntensity={1.3}>
-        <mesh position={[-1.8, -1.05, -0.55]} scale={0.25}>
+        <mesh position={[-1.55, -0.9, -0.55]} scale={0.2}>
           <octahedronGeometry args={[1, 0]} />
           <meshStandardMaterial color="#ffd0a8" emissive="#ff845d" emissiveIntensity={0.6} />
         </mesh>
       </Float>
 
-      <Sparkles count={36} speed={0.5} size={2.8} scale={[7, 4, 4]} color="#7bf4ff" />
+      <Sparkles count={46} speed={0.55} size={2.1} scale={[7, 4, 4]} color="#7bf4ff" />
     </group>
   );
 }

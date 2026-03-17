@@ -27,6 +27,10 @@ export function usePointerParallax(): void {
       root.style.setProperty('--pointer-soft-a-y', `${(30 + ny * 12).toFixed(2)}%`);
       root.style.setProperty('--pointer-soft-b-x', `${(40 - nx * 10).toFixed(2)}%`);
       root.style.setProperty('--pointer-soft-b-y', `${(70 - ny * 8).toFixed(2)}%`);
+      root.style.setProperty('--star-a-x', `${(nx * 7.2).toFixed(2)}px`);
+      root.style.setProperty('--star-a-y', `${(ny * 4.8).toFixed(2)}px`);
+      root.style.setProperty('--star-b-x', `${(nx * -5.8).toFixed(2)}px`);
+      root.style.setProperty('--star-b-y', `${(ny * -3.8).toFixed(2)}px`);
 
       animationFrame = window.requestAnimationFrame(update);
     };

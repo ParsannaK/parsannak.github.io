@@ -26,6 +26,8 @@ function App(): JSX.Element {
 
   return (
     <div className="app-shell">
+      <div className="starfield starfield-a" aria-hidden="true" />
+      <div className="starfield starfield-b" aria-hidden="true" />
       <div className="ambient ambient-a" aria-hidden="true" />
       <div className="ambient ambient-b" aria-hidden="true" />
 

@@ -39,9 +39,6 @@ export function Navbar({ items, activeSection }: NavbarProps): JSX.Element {
             {item.label}
           </a>
         ))}
-        <a href="#contact" className="nav-cta" onClick={closeMenu}>
-          Reach Out
-        </a>
       </nav>
     </header>
   );

@@ -16,7 +16,7 @@ export const siteContent: SiteContent = {
     tagline: 'Software Engineer and Computer Science graduate from the University of Michigan.',
     summary:
       'Software engineer with hands-on experience in product development, AI, and computer vision. I build scalable applications across web, mobile, and backend systems with a focus on strong architecture, performance, and user impact.',
-    location: 'New York City, NY',
+    location: 'United States',
     availability: 'Open to full-time software engineering opportunities.',
     portrait: '/assets/portrait.jpg',
   },
@@ -54,7 +54,7 @@ export const siteContent: SiteContent = {
     {
       title: 'FloraGuide: AI Garden Assistant',
       description:
-        'Built and deployed a cross-platform gardening assistant for iOS, Android, and web using a unified TypeScript architecture. Integrated AI-powered plant guidance, real-time data sync, secure auth, and cloud-backed image storage. Screenshot is a temporary placeholder and will be replaced with updated visuals.',
+        'Built and deployed a cross-platform gardening assistant for iOS, Android, and web using a unified TypeScript architecture. Integrated AI-powered plant guidance, real-time data sync, secure auth, and cloud-backed image storage.',
       stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Render', 'Cloudflare R2', 'Node.js'],
       image: '/assets/project3.png',
       links: [
@@ -65,7 +65,7 @@ export const siteContent: SiteContent = {
     {
       title: 'My2Do: Tasks & Habits',
       description:
-        'Engineered and published a native iOS productivity app with task scheduling, habit tracking, and workflow customization. Shipped to the App Store with polished UX and scalable architecture; current preview image is a temporary placeholder.',
+        'Engineered and published a native iOS productivity app with task scheduling, habit tracking, and workflow customization. Shipped to the App Store with polished UX and scalable architecture.',
       stack: ['Swift', 'SwiftUI', 'CoreML', 'SwiftData', 'iOS', 'App Store Connect'],
       image: '/assets/project5.png',
       links: [
@@ -88,6 +88,14 @@ export const siteContent: SiteContent = {
           url: 'https://github.com/AwrodHaghiTabrizi/UMARV-CV-LaneDetection/tree/users/Parsanna/models/model_2y4c4shn',
         },
       ],
+    },
+    {
+      title: 'Weather Intelligence Dashboard',
+      description:
+        'Built a responsive weather web app that delivers real-time city weather details with API-driven data handling and clean interaction design. This project highlights practical frontend engineering and external API integration.',
+      stack: ['JavaScript', 'REST API', 'OpenWeather', 'Responsive UI'],
+      image: '/assets/project2.png',
+      links: [{ label: 'Live Demo', url: 'https://parsannak.github.io/WeatherWebApp/' }],
     },
   ],
   experience: [
