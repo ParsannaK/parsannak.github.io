@@ -11,12 +11,14 @@ import { assertValidSiteContent } from './content/validateContent';
 import { siteContent } from './content/siteContent';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useGraphicsMode } from './hooks/useGraphicsMode';
+import { usePointerParallax } from './hooks/usePointerParallax';
 import { useRevealAnimations } from './hooks/useRevealAnimations';
 
 assertValidSiteContent(siteContent);
 
 function App(): JSX.Element {
   useRevealAnimations();
+  usePointerParallax();
 
   const { enable3D, reducedMotion } = useGraphicsMode();
   const sectionIds = useMemo(() => siteContent.navigation.map((item) => item.id), []);

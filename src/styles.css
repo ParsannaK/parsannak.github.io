@@ -11,6 +11,18 @@
   --brand-warm: #ff8f6b;
   --brand-soft: #7ef9bf;
   --shadow: 0 18px 60px rgba(1, 6, 22, 0.45);
+  --pointer-x: 50%;
+  --pointer-y: 45%;
+  --pointer-nx: 0;
+  --pointer-ny: 0;
+  --pointer-shift-x: 0px;
+  --pointer-shift-y: 0px;
+  --pointer-shift-x-neg: 0px;
+  --pointer-shift-y-neg: 0px;
+  --pointer-soft-a-x: 50%;
+  --pointer-soft-a-y: 30%;
+  --pointer-soft-b-x: 40%;
+  --pointer-soft-b-y: 70%;
 }
 
 * {
@@ -26,8 +38,12 @@ body {
   min-height: 100vh;
   color: var(--text);
   background:
-    radial-gradient(circle at 15% 18%, rgba(82, 187, 255, 0.22), transparent 42%),
-    radial-gradient(circle at 88% 8%, rgba(255, 134, 104, 0.22), transparent 36%),
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(74, 221, 255, 0.24), transparent 42%),
+    radial-gradient(
+      circle at calc(100% - var(--pointer-x)) calc(100% - var(--pointer-y)),
+      rgba(255, 143, 107, 0.24),
+      transparent 36%
+    ),
     linear-gradient(165deg, #040714 0%, #070d23 50%, #04070f 100%);
   font-family: 'Space Grotesk', 'Sora', sans-serif;
   line-height: 1.55;
@@ -48,12 +64,24 @@ img {
   overflow: clip;
 }
 
+.app-shell::before {
+  content: '';
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(circle at var(--pointer-soft-a-x) var(--pointer-soft-a-y), rgba(129, 243, 255, 0.11), transparent 50%),
+    radial-gradient(circle at var(--pointer-soft-b-x) var(--pointer-soft-b-y), rgba(255, 150, 111, 0.09), transparent 46%);
+}
+
 .ambient {
   position: fixed;
   inset: auto;
   z-index: -1;
   filter: blur(80px);
   pointer-events: none;
+  transition: transform 120ms linear;
 }
 
 .ambient-a {
@@ -63,6 +91,7 @@ img {
   height: 26rem;
   border-radius: 999px;
   background: rgba(80, 210, 255, 0.44);
+  transform: translate(var(--pointer-shift-x), var(--pointer-shift-y));
 }
 
 .ambient-b {
@@ -72,6 +101,7 @@ img {
   height: 22rem;
   border-radius: 42% 58% 60% 40% / 40% 56% 44% 60%;
   background: rgba(255, 130, 97, 0.38);
+  transform: translate(var(--pointer-shift-x-neg), var(--pointer-shift-y-neg));
 }
 
 .site-header {
@@ -226,6 +256,23 @@ main {
   max-width: 62ch;
 }
 
+.hero-meta {
+  margin-top: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-meta span {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: #dbecff;
+  border: 1px solid rgba(162, 197, 255, 0.34);
+  background: rgba(14, 26, 63, 0.72);
+  border-radius: 999px;
+  padding: 0.32rem 0.58rem;
+}
+
 .hero-actions {
   margin-top: 1.75rem;
   display: flex;
@@ -267,35 +314,6 @@ main {
   color: #d8e5ff;
 }
 
-.hero-stats {
-  margin: 1.9rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.9rem;
-}
-
-.hero-stats li {
-  padding: 0.9rem;
-  border-radius: 1rem;
-  border: 1px solid var(--line);
-  background: rgba(13, 24, 59, 0.55);
-}
-
-.hero-stats span {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 0.4rem;
-}
-
-.hero-stats strong {
-  font-size: 0.93rem;
-}
-
 .hero-visual {
   width: 100%;
 }
@@ -306,11 +324,12 @@ main {
   margin-left: auto;
   height: clamp(320px, 44vw, 470px);
   border-radius: 1.6rem;
-  border: 1px solid rgba(141, 172, 255, 0.35);
+  border: 1px solid rgba(126, 237, 255, 0.45);
   background:
-    radial-gradient(circle at 18% 20%, rgba(111, 232, 255, 0.2), transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(255, 132, 95, 0.22), transparent 38%),
-    rgba(13, 22, 56, 0.82);
+    radial-gradient(circle at 22% 20%, rgba(97, 245, 255, 0.28), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(255, 147, 108, 0.3), transparent 38%),
+    radial-gradient(circle at 52% 50%, rgba(92, 255, 190, 0.12), transparent 46%),
+    rgba(10, 20, 52, 0.86);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -653,7 +672,6 @@ main {
     height: clamp(290px, 58vw, 430px);
   }
 
-  .hero-stats,
   .skills-grid,
   .projects-grid {
     grid-template-columns: 1fr;

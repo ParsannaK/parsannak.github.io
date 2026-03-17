@@ -12,130 +12,128 @@ export const siteContent: SiteContent = {
   ],
   profile: {
     name: 'Parsanna Koirala',
-    role: 'Software Developer',
-    tagline: 'Building thoughtful products at the edge of full-stack and intelligent systems.',
+    role: 'Software Engineer',
+    tagline: 'Software Engineer and Computer Science graduate from the University of Michigan.',
     summary:
-      'Computer Science student at the University of Michigan focused on product-minded engineering, scalable web systems, and machine-learning-driven applications.',
-    location: 'Ann Arbor, Michigan',
-    availability: 'Open to software engineering internships and collaborative projects.',
-    heroStats: [
-      { label: 'Featured Projects', value: '6' },
-      { label: 'Focus Areas', value: 'Full-Stack + ML' },
-      { label: 'Current Goal', value: 'Ship high-impact products' },
-    ],
+      'Software engineer with hands-on experience in product development, AI, and computer vision. I build scalable applications across web, mobile, and backend systems with a focus on strong architecture, performance, and user impact.',
+    location: 'New York City, NY',
+    availability: 'Open to full-time software engineering opportunities.',
     portrait: '/assets/portrait.jpg',
   },
   about: [
-    'I enjoy taking ideas from concept to polished product with a strong emphasis on usability, maintainability, and performance. My recent work includes computer-vision systems, API-driven apps, and practical developer tooling.',
-    'I bring a collaborative mindset shaped by technical projects and operations leadership roles. I am especially motivated by teams that care about user outcomes and engineering quality.',
-    'TODO: Replace these paragraphs with your latest personal story, interests, and long-term direction.',
+    'I enjoy building products end-to-end, from architecture and technical planning to implementation and launch. My work spans native iOS apps, cross-platform React Native systems, and AI-driven tooling.',
+    'Most recently, I have been developing production-facing software in fintech, building resilient Java and SQL components while collaborating with engineering and product teams on high-impact workflows.',
+    'I care deeply about clear problem framing, maintainable code, and delivering polished experiences that users actually rely on.',
   ],
   skills: [
     {
-      title: 'Core Engineering',
-      items: ['TypeScript', 'JavaScript', 'Python', 'C++', 'Data Structures', 'Algorithms'],
+      title: 'Languages',
+      items: ['TypeScript', 'JavaScript', 'Python', 'Swift', 'Java', 'C++', 'Node.js', 'C#'],
     },
     {
-      title: 'Frontend & Product',
-      items: ['React', 'HTML/CSS', 'Responsive UI', 'Accessibility', 'State Management'],
+      title: 'Frameworks & Tools',
+      items: ['React', 'React Native', 'Expo', 'SwiftUI', 'Git', 'Maven', 'SQL', 'Oracle'],
     },
     {
-      title: 'Backend & Systems',
-      items: ['Node.js', 'REST APIs', 'SQL', 'Firebase', 'Cloud Fundamentals'],
+      title: 'Cloud, Backend & Data',
+      items: ['Supabase', 'Render', 'Cloudflare R2', 'REST APIs', 'System Design', 'Databases'],
     },
     {
-      title: 'Machine Learning',
-      items: ['PyTorch', 'Computer Vision', 'Model Training', 'Real-time Inference'],
+      title: 'AI/ML & Engineering Practices',
+      items: [
+        'Machine Learning',
+        'Deep Learning',
+        'Computer Vision',
+        'CoreML',
+        'OpenCV',
+        'Agile Development',
+      ],
     },
   ],
   projects: [
     {
-      title: 'DCNN Lane Detection',
+      title: 'FloraGuide: AI Garden Assistant',
       description:
-        'Developed DCNN and DRNN models for real-time lane detection from live video streams, improving robustness under varying road and lighting conditions.',
-      stack: ['Python', 'PyTorch', 'OpenCV', 'Deep Learning'],
-      image: '/assets/project1.png',
-      repoUrl:
-        'https://github.com/AwrodHaghiTabrizi/UMARV-CV-LaneDetection/tree/users/Parsanna/models/model_2y4c4shn',
-    },
-    {
-      title: 'Notes Web App',
-      description:
-        'Built a persistent notes application with local storage so users can create, edit, and revisit notes across browser sessions.',
-      stack: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
-      image: '/assets/project2.png',
-      demoUrl: 'https://parsannak.github.io/notesApp/',
-    },
-    {
-      title: 'Weather Web App',
-      description:
-        'Created a city-based weather dashboard with real-time temperature, humidity, and wind speed using the OpenWeather API.',
-      stack: ['JavaScript', 'REST API', 'OpenWeather', 'Responsive Design'],
+        'Built and deployed a cross-platform gardening assistant for iOS, Android, and web using a unified TypeScript architecture. Integrated AI-powered plant guidance, real-time data sync, secure auth, and cloud-backed image storage. Screenshot is a temporary placeholder and will be replaced with updated visuals.',
+      stack: ['React Native', 'Expo', 'TypeScript', 'Supabase', 'Render', 'Cloudflare R2', 'Node.js'],
       image: '/assets/project3.png',
-      demoUrl: 'https://parsannak.github.io/WeatherWebApp/',
+      links: [
+        { label: 'Live Site', url: 'https://floraguide.onrender.com/' },
+        { label: 'GitHub', url: 'https://github.com/ParsannaK/FloraGuide' },
+      ],
     },
     {
-      title: 'Random Password Generator',
+      title: 'My2Do: Tasks & Habits',
       description:
-        'Implemented a customizable password generator focused on usability and practical security for everyday users.',
-      stack: ['JavaScript', 'UI Design', 'Security Basics'],
-      image: '/assets/project4.png',
-      demoUrl: 'https://parsannak.github.io/RandomPasswordGenerator/',
-    },
-    {
-      title: 'To-Do List Web App',
-      description:
-        'Designed a task manager with local persistence, fast interaction patterns, and a clean workflow for daily productivity.',
-      stack: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
+        'Engineered and published a native iOS productivity app with task scheduling, habit tracking, and workflow customization. Shipped to the App Store with polished UX and scalable architecture; current preview image is a temporary placeholder.',
+      stack: ['Swift', 'SwiftUI', 'CoreML', 'SwiftData', 'iOS', 'App Store Connect'],
       image: '/assets/project5.png',
-      demoUrl: 'https://parsannak.github.io/ToDoListWeb/',
+      links: [
+        { label: 'Landing Page', url: 'https://my2do-site.vercel.app/' },
+        {
+          label: 'App Store',
+          url: 'https://apps.apple.com/us/app/my2do-tasks-habits/id6756674181',
+        },
+      ],
     },
     {
-      title: 'Custom Quiz App',
+      title: 'Autonomous Lane Detection',
       description:
-        'Developed an interactive quiz platform with instant answer feedback and score tracking to improve engagement.',
-      stack: ['JavaScript', 'UX', 'State Handling'],
-      image: '/assets/project6.png',
-      demoUrl: 'https://parsannak.github.io/customQuizWebApp/',
+        'Led model development for lane and driveable-area perception on the University of Michigan Autonomous Robotic Vehicle Team. Designed and optimized DCNN/DRNN pipelines for real-time video processing under real-world constraints.',
+      stack: ['Python', 'PyTorch', 'OpenCV', 'Computer Vision', 'Deep Learning'],
+      image: '/assets/project1.png',
+      links: [
+        {
+          label: 'Research Repo',
+          url: 'https://github.com/AwrodHaghiTabrizi/UMARV-CV-LaneDetection/tree/users/Parsanna/models/model_2y4c4shn',
+        },
+      ],
     },
   ],
   experience: [
     {
+      company: 'ECS Fin',
+      role: 'Software Engineer & Product Management Intern',
+      period: 'Jan 2026 - Present',
+      summary:
+        'Developing enterprise fintech software by combining backend engineering, data systems, and product-oriented execution in Agile teams.',
+      highlights: [
+        'Developed scalable financial messaging components using Java EE and enterprise design patterns for resilient distributed workflows.',
+        'Built and optimized SQL queries, stored procedures, and triggers across Oracle and SQL Server to support high-volume transactions.',
+        'Translated business requirements into technical specifications, user stories, and implementation plans with cross-functional stakeholders.',
+      ],
+    },
+    {
       company: 'University of Michigan Autonomous Robotic Vehicle Team',
-      role: 'Computer Vision Contributor',
-      period: '2024 - Present',
-      summary: 'Developed and evaluated deep-learning lane-detection pipelines for autonomous navigation research.',
+      role: 'Lead Developer',
+      period: 'Jan 2023 - Dec 2025',
+      summary:
+        'Led AI/ML perception development for autonomous robotics competition use cases.',
       highlights: [
-        'Built real-time model variants and compared performance across changing visual conditions.',
-        'Collaborated with peers on experimentation strategy and validation methodology.',
+        'Designed DCNN and DRNN architectures for live video streams, reaching 87% accuracy in driveable area prediction.',
+        'Directed iterative model evaluation and optimization under real-time and environment-variation constraints.',
       ],
     },
     {
-      company: 'University Recreation Sports Center',
+      company: 'University of Michigan - Ann Arbor',
       role: 'Building Supervisor',
-      period: '2023 - Present',
-      summary: 'Lead shift operations and coordinate student staff while maintaining service quality and safety standards.',
+      period: 'Apr 2024 - Dec 2025',
+      summary:
+        'Managed operations and frontline support in a high-traffic environment while leading a 20-person student staff team.',
       highlights: [
-        'Managed frontline operations and escalations during high-traffic hours.',
-        'Strengthened leadership, communication, and decision-making in fast-paced scenarios.',
+        'Coordinated scheduling, issue resolution, and service standards in a fast-paced customer-facing setting.',
+        'Strengthened leadership, communication, and operational problem-solving through day-to-day team management.',
       ],
-    },
-    {
-      company: 'Next Experience Slot',
-      role: 'TODO: Add latest internship or role',
-      period: 'TODO: Add dates',
-      summary: 'TODO: Replace with your newest experience summary.',
-      highlights: ['TODO: Add measurable outcomes.', 'TODO: Add technologies and impact.'],
     },
   ],
   resume: {
-    filePath: '/Parsanna_Resume.pdf',
+    filePath: '/resume.pdf',
     downloadLabel: 'Download Resume (PDF)',
     updatedAt: 'Updated March 2026',
   },
   contact: {
     headline: 'Let\'s build something ambitious together.',
-    email: 'hello@parsannak.dev',
+    email: 'prasanna.koirala302@gmail.com',
     social: [
       { label: 'GitHub', url: 'https://github.com/ParsannaK', icon: 'github' },
       {
@@ -143,7 +141,7 @@ export const siteContent: SiteContent = {
         url: 'https://www.linkedin.com/in/parsanna-koirala-931b5b250/',
         icon: 'linkedin',
       },
-      { label: 'Email', url: 'mailto:hello@parsannak.dev', icon: 'email' },
+      { label: 'Email', url: 'mailto:prasanna.koirala302@gmail.com', icon: 'email' },
     ],
   },
 };

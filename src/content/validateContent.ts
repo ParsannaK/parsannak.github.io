@@ -33,14 +33,16 @@ export function validateSiteContent(content: SiteContent): string[] {
     if (!project.title.trim()) errors.push(`Project #${index + 1} is missing a title.`);
     if (!project.description.trim()) errors.push(`Project #${index + 1} is missing a description.`);
     if (!project.image.trim()) errors.push(`Project #${index + 1} is missing an image path.`);
+    if (!project.links.length) errors.push(`Project #${index + 1} requires at least one link.`);
 
-    if (project.demoUrl && !isValidUrl(project.demoUrl)) {
-      errors.push(`Project #${index + 1} has an invalid demo URL.`);
-    }
-
-    if (project.repoUrl && !isValidUrl(project.repoUrl)) {
-      errors.push(`Project #${index + 1} has an invalid repository URL.`);
-    }
+    project.links.forEach((link, linkIndex) => {
+      if (!link.label.trim()) {
+        errors.push(`Project #${index + 1} link #${linkIndex + 1} is missing a label.`);
+      }
+      if (!isValidUrl(link.url)) {
+        errors.push(`Project #${index + 1} link #${linkIndex + 1} has an invalid URL.`);
+      }
+    });
   });
 
   content.experience.forEach((item, index) => {

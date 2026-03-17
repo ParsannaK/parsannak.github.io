@@ -58,16 +58,11 @@ export function ProjectsSection({ projects, disableTilt }: ProjectsSectionProps)
             </ul>
 
             <div className="project-actions">
-              {project.demoUrl ? (
-                <a href={project.demoUrl} target="_blank" rel="noreferrer" className="btn btn-ghost">
-                  Live Demo
+              {project.links.map((link) => (
+                <a key={link.url} href={link.url} target="_blank" rel="noreferrer" className="btn btn-ghost">
+                  {link.label}
                 </a>
-              ) : null}
-              {project.repoUrl ? (
-                <a href={project.repoUrl} target="_blank" rel="noreferrer" className="btn btn-ghost">
-                  Source
-                </a>
-              ) : null}
+              ))}
             </div>
           </article>
         ))}

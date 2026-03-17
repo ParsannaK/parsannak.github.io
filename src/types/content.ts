@@ -19,7 +19,6 @@ export interface Profile {
   summary: string;
   location: string;
   availability: string;
-  heroStats: Array<{ label: string; value: string }>;
   portrait: string;
 }
 
@@ -28,13 +27,17 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface ProjectItem {
   title: string;
   description: string;
   stack: string[];
   image: string;
-  demoUrl?: string;
-  repoUrl?: string;
+  links: ProjectLink[];
 }
 
 export interface ExperienceItem {

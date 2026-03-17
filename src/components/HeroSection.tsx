@@ -12,11 +12,16 @@ export function HeroSection({ profile, enable3D }: HeroSectionProps): JSX.Elemen
   return (
     <section id="home" className="hero section-wrap" data-reveal>
       <div className="hero-copy" data-reveal>
-        <p className="eyebrow">Software Developer Portfolio</p>
+        <p className="eyebrow">Software Engineer Portfolio</p>
         <h1>{profile.name}</h1>
         <h2>{profile.role}</h2>
         <p className="hero-tagline">{profile.tagline}</p>
         <p className="hero-summary">{profile.summary}</p>
+
+        <div className="hero-meta">
+          <span>{profile.location}</span>
+          <span>{profile.availability}</span>
+        </div>
 
         <div className="hero-actions">
           <a href="#projects" className="btn btn-primary">
@@ -26,15 +31,6 @@ export function HeroSection({ profile, enable3D }: HeroSectionProps): JSX.Elemen
             Resume
           </a>
         </div>
-
-        <ul className="hero-stats">
-          {profile.heroStats.map((stat) => (
-            <li key={stat.label}>
-              <span>{stat.label}</span>
-              <strong>{stat.value}</strong>
-            </li>
-          ))}
-        </ul>
       </div>
 
       <div className="hero-visual" data-reveal>
