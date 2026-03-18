@@ -687,17 +687,66 @@ main {
   border-radius: 1.6rem;
   border: 1px solid rgba(126, 237, 255, 0.45);
   background:
-    radial-gradient(circle at 22% 20%, rgba(97, 245, 255, 0.28), transparent 45%),
-    radial-gradient(circle at 80% 75%, rgba(255, 147, 108, 0.3), transparent 38%),
+    radial-gradient(circle at 20% 18%, rgba(108, 244, 255, 0.3), transparent 38%),
+    radial-gradient(circle at 78% 74%, rgba(255, 150, 112, 0.28), transparent 34%),
     radial-gradient(circle at 52% 50%, rgba(92, 255, 190, 0.12), transparent 46%),
+    linear-gradient(145deg, rgba(11, 24, 56, 0.92), rgba(8, 15, 35, 0.9)),
     rgba(10, 20, 52, 0.86);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
+.hero-canvas-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-canvas-shell::before,
+.hero-canvas-shell::after {
+  content: '';
+  position: absolute;
+  inset: -14%;
+  pointer-events: none;
+}
+
+.hero-canvas-shell::before {
+  background:
+    radial-gradient(circle at 26% 28%, rgba(129, 246, 255, 0.34), transparent 22%),
+    radial-gradient(circle at 70% 74%, rgba(255, 147, 111, 0.22), transparent 21%),
+    conic-gradient(
+      from 210deg at 50% 50%,
+      rgba(123, 244, 255, 0) 0deg,
+      rgba(123, 244, 255, 0.16) 42deg,
+      rgba(255, 156, 116, 0.18) 95deg,
+      rgba(123, 244, 255, 0) 170deg,
+      rgba(123, 244, 255, 0.08) 260deg,
+      rgba(123, 244, 255, 0) 360deg
+    );
+  filter: blur(26px);
+  opacity: 0.72;
+  animation: heroShellGlow 15s linear infinite;
+}
+
+.hero-canvas-shell::after {
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 18%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.055) 0,
+      rgba(255, 255, 255, 0.055) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.2;
+}
+
 .hero-canvas-shell canvas {
   width: 100% !important;
   height: 100% !important;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-fallback-loading {
@@ -708,12 +757,16 @@ main {
   color: var(--muted);
   letter-spacing: 0.05em;
   font-size: 0.86rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-fallback {
   display: grid;
   place-items: center;
   padding: 1.4rem;
+  position: relative;
+  z-index: 0;
 }
 
 .hero-fallback img {
@@ -1087,6 +1140,18 @@ main {
   }
   100% {
     transform: translate3d(1.2%, -0.8%, 0) scale(1.02);
+  }
+}
+
+@keyframes heroShellGlow {
+  0% {
+    transform: translate3d(-1.2%, 0.6%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1.2%, -0.7%, 0) scale(1.035);
+  }
+  100% {
+    transform: translate3d(-1.2%, 0.6%, 0) scale(1);
   }
 }
 
