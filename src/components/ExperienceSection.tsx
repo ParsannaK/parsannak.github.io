@@ -10,12 +10,17 @@ export function ExperienceSection({ items }: ExperienceSectionProps): JSX.Elemen
     <section id="experience" className="section-wrap" data-reveal>
       <div className="section-title-block">
         <p className="eyebrow">Experience</p>
-        <h2> Work & Leadership</h2>
+        <h2>Work & Leadership</h2>
       </div>
 
       <div className="timeline">
         {items.map((item, index) => (
-          <article key={`${item.company}-${item.role}`} className="timeline-card" data-reveal style={{ '--delay-index': index } as CSSProperties}>
+          <article
+            key={`${item.company}-${item.role}`}
+            className="timeline-card"
+            data-reveal
+            style={{ '--delay-index': index } as CSSProperties}
+          >
             <div className="timeline-meta">
               <h3>{item.role}</h3>
               <span>{item.company}</span>

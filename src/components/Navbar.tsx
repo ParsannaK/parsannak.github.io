@@ -17,6 +17,11 @@ export function Navbar({ items, activeSection }: NavbarProps): JSX.Element {
         PK
       </a>
 
+      <div className="palette-hint" aria-hidden="true">
+        <span>Press</span>
+        <kbd>⌘ / Ctrl + K</kbd>
+      </div>
+
       <button
         type="button"
         className="menu-toggle"
