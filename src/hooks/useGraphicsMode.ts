@@ -18,12 +18,18 @@ function isConstrainedDevice(): boolean {
   return memoryConstrained || cpuConstrained;
 }
 
+function isMobileLikeViewport(): boolean {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(max-width: 900px), (pointer: coarse)').matches;
+}
+
 export function useGraphicsMode(): { enable3D: boolean; reducedMotion: boolean } {
   const reducedMotion = useReducedMotion();
 
   const enable3D = useMemo(() => {
     if (typeof window === 'undefined') return false;
     if (reducedMotion) return false;
+    if (isMobileLikeViewport()) return false;
     if (isConstrainedDevice()) return false;
     return hasWebGLSupport();
   }, [reducedMotion]);

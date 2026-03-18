@@ -28,15 +28,34 @@ export const siteContent: SiteContent = {
   skills: [
     {
       title: 'Languages',
-      items: ['TypeScript', 'JavaScript', 'Python', 'Swift', 'Java', 'C++', 'Node.js', 'C#'],
+      items: ['TypeScript', 'JavaScript', 'Python', 'Swift', 'Java', 'C++', 'Rust', 'C#'],
     },
     {
       title: 'Frameworks & Tools',
-      items: ['React', 'React Native', 'Expo', 'SwiftUI', 'Git', 'Maven', 'SQL', 'Oracle'],
+      items: [
+        'React',
+        'React Native',
+        'Expo',
+        'SwiftUI',
+        'Unity',
+        'Unreal Engine',
+        'Git',
+        'Docker',
+        'Maven',
+      ],
     },
     {
       title: 'Cloud, Backend & Data',
-      items: ['Supabase', 'Render', 'Cloudflare R2', 'REST APIs', 'System Design', 'Databases'],
+      items: [
+        'AWS',
+        'Supabase',
+        'Render',
+        'Cloudflare R2',
+        'REST APIs',
+        'PostgreSQL',
+        'Oracle',
+        'System Design',
+      ],
     },
     {
       title: 'AI/ML & Engineering Practices',
@@ -44,6 +63,7 @@ export const siteContent: SiteContent = {
         'Machine Learning',
         'Deep Learning',
         'Computer Vision',
+        'PyTorch',
         'CoreML',
         'OpenCV',
         'Agile Development',
