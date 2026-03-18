@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { IconGlyph } from './IconGlyph';
 import type { Profile, SocialLink } from '../types/content';
+import { useTypewriterRoles } from '../hooks/useTypewriterRoles';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
@@ -11,12 +12,25 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ profile, socialLinks, enable3D }: HeroSectionProps): JSX.Element {
+  const rotatingRoles = useMemo(() => {
+    const roles = [profile.role, 'Coder', 'Developer', 'Builder'];
+    return roles.filter((role, index) => role && roles.indexOf(role) === index);
+  }, [profile.role]);
+
+  const animatedRole = useTypewriterRoles(rotatingRoles);
+
   return (
     <section id="home" className="hero section-wrap" data-reveal>
       <div className="hero-copy" data-reveal>
-        <p className="eyebrow">Software Engineer Portfolio</p>
-        <h1>{profile.name}</h1>
-        <h2>{profile.role}</h2>
+        <h1 className="hero-name" data-text={profile.name}>
+          {profile.name}
+        </h1>
+        <h2 className="hero-roleline">
+          <span className="typed-live">
+            {animatedRole || '\u00A0'}
+            <span className="typing-caret" aria-hidden="true" />
+          </span>
+        </h2>
         <p className="hero-tagline">{profile.tagline}</p>
         <p className="hero-summary">{profile.summary}</p>
 

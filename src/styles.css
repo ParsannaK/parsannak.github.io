@@ -35,6 +35,12 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 20% 18%, rgba(72, 184, 255, 0.22), transparent 44%),
+    radial-gradient(circle at 82% 11%, rgba(255, 142, 108, 0.2), transparent 37%),
+    linear-gradient(165deg, #040714 0%, #070d23 50%, #04070f 100%);
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -49,8 +55,10 @@ body {
       transparent 36%
     ),
     linear-gradient(165deg, #040714 0%, #070d23 50%, #04070f 100%);
+  overscroll-behavior-y: none;
   font-family: 'Space Grotesk', 'Sora', sans-serif;
   line-height: 1.55;
+  overflow-x: hidden;
 }
 
 a {
@@ -454,17 +462,95 @@ main {
   min-height: min(86vh, 760px);
 }
 
-.hero-copy h1 {
+.hero-name {
   margin: 0;
   font-size: clamp(2.2rem, 6vw, 4.4rem);
   line-height: 1;
   font-family: 'Sora', sans-serif;
+  display: inline-block;
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 240ms ease,
+    text-shadow 240ms ease,
+    filter 240ms ease,
+    letter-spacing 240ms ease;
+}
+
+.hero-name::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: rgba(113, 236, 255, 0.58);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  text-shadow:
+    -1px 0 rgba(255, 140, 111, 0.38),
+    1px 0 rgba(111, 235, 255, 0.46);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+  z-index: -1;
+}
+
+.hero-name:hover {
+  transform: translateY(-3px) scale(1.018);
+  letter-spacing: 0.01em;
+  text-shadow:
+    0 0 24px rgba(109, 225, 255, 0.5),
+    0 0 48px rgba(255, 151, 114, 0.28);
+  filter: saturate(1.15);
+  background-image: linear-gradient(96deg, #ecf5ff 5%, #7beeff 36%, #ff9f7b 66%, #f2f7ff 96%);
+  background-size: 230% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: nameSheen 2.8s linear infinite;
+}
+
+.hero-name:hover::after {
+  opacity: 0.86;
+  transform: translate3d(3px, -2px, 0);
+  animation: nameGhost 1.2s steps(2, end) infinite;
 }
 
 .hero-copy h2 {
   margin: 0.7rem 0 1rem;
   font-size: clamp(1.15rem, 2.1vw, 1.7rem);
   color: var(--brand);
+}
+
+.hero-roleline {
+  display: inline-grid;
+  align-items: center;
+  min-height: 1.35em;
+  line-height: 1.1;
+}
+
+.hero-roleline::before {
+  content: 'Software Engineer';
+  visibility: hidden;
+  white-space: nowrap;
+  grid-area: 1 / 1;
+}
+
+.typed-live {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.typing-caret {
+  margin-left: 0.08em;
+  width: 2px;
+  height: 1.1em;
+  background: rgba(120, 236, 255, 0.95);
+  box-shadow: 0 0 12px rgba(108, 223, 255, 0.6);
+  animation: caretBlink 1s steps(1, end) infinite;
 }
 
 .hero-tagline {
@@ -1004,6 +1090,38 @@ main {
   }
 }
 
+@keyframes caretBlink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes nameSheen {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+@keyframes nameGhost {
+  0%,
+  100% {
+    transform: translate3d(3px, -2px, 0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translate3d(-2px, 2px, 0);
+    opacity: 0.42;
+  }
+}
+
 @media (max-width: 980px) {
   .site-header {
     border-radius: 1rem;
@@ -1084,6 +1202,10 @@ main {
   .matrix-rain {
     opacity: 0.15;
   }
+
+  .hero-roleline::before {
+    content: 'Developer';
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1111,5 +1233,18 @@ main {
   .matrix-rain,
   .starfield {
     display: none;
+  }
+
+  .typing-caret {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero-name:hover {
+    animation: none;
+  }
+
+  .hero-name:hover::after {
+    animation: none;
   }
 }
