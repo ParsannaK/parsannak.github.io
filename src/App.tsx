@@ -12,17 +12,19 @@ import { assertValidSiteContent } from './content/validateContent';
 import { siteContent } from './content/siteContent';
 import { useActiveSection } from './hooks/useActiveSection';
 import { useGraphicsMode } from './hooks/useGraphicsMode';
-import { usePointerParallax } from './hooks/usePointerParallax';
 import { useRevealAnimations } from './hooks/useRevealAnimations';
 
 assertValidSiteContent(siteContent);
 
 function App(): JSX.Element {
   useRevealAnimations();
-  usePointerParallax();
 
   const { enable3D, reducedMotion } = useGraphicsMode();
   const sectionIds = useMemo(() => siteContent.navigation.map((item) => item.id), []);
+  const heroSocialLinks = useMemo(
+    () => siteContent.contact.social.filter((link) => link.icon === 'github' || link.icon === 'linkedin'),
+    [],
+  );
   const activeSection = useActiveSection(sectionIds);
 
   return (
@@ -36,7 +38,7 @@ function App(): JSX.Element {
       <Navbar items={siteContent.navigation} activeSection={activeSection} />
 
       <main>
-        <HeroSection profile={siteContent.profile} enable3D={enable3D} />
+        <HeroSection profile={siteContent.profile} socialLinks={heroSocialLinks} enable3D={enable3D} />
         <AboutSection paragraphs={siteContent.about} />
         <SkillsSection skills={siteContent.skills} />
         <ProjectsSection projects={siteContent.projects} disableTilt={reducedMotion} />

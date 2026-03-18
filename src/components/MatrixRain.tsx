@@ -6,9 +6,13 @@ const CHARSET = '01{}[]<>$#*+=-_~/\\';
 export function MatrixRain(): JSX.Element | null {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const reducedMotion = useReducedMotion();
+  const lowPowerDevice =
+    typeof navigator !== 'undefined' &&
+    (((navigator as Navigator & { deviceMemory?: number }).deviceMemory ?? 8) <= 4 ||
+      (navigator.hardwareConcurrency ?? 8) <= 4);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (reducedMotion || lowPowerDevice) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -17,14 +21,17 @@ export function MatrixRain(): JSX.Element | null {
     if (!context) return;
 
     let frameId = 0;
+    let lastFrame = 0;
     let width = 0;
     let height = 0;
-    let fontSize = 15;
+    let fontSize = 18;
+    let columnWidth = 24;
     let columns = 0;
     let drops: number[] = [];
+    const targetFrameInterval = 1000 / 22;
 
     const resize = (): void => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = 1;
       width = window.innerWidth;
       height = window.innerHeight;
 
@@ -34,34 +41,41 @@ export function MatrixRain(): JSX.Element | null {
       canvas.style.height = `${height}px`;
 
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
-      fontSize = width < 900 ? 13 : 15;
-      columns = Math.floor(width / fontSize);
+      fontSize = width < 900 ? 15 : 18;
+      columnWidth = Math.floor(fontSize * 1.32);
+      columns = Math.floor(width / columnWidth);
       drops = Array.from({ length: columns }, () => Math.random() * (height / fontSize));
     };
 
     const draw = (timestamp: number): void => {
-      context.fillStyle = 'rgba(2, 10, 24, 0.085)';
+      if (timestamp - lastFrame < targetFrameInterval) {
+        frameId = window.requestAnimationFrame(draw);
+        return;
+      }
+      lastFrame = timestamp;
+
+      context.fillStyle = 'rgba(2, 10, 24, 0.1)';
       context.fillRect(0, 0, width, height);
       context.font = `${fontSize}px "Space Grotesk", monospace`;
       context.textBaseline = 'top';
 
-      const wave = timestamp * 0.0012;
+      const wave = timestamp * 0.00075;
 
       for (let i = 0; i < columns; i += 1) {
         const char = CHARSET[Math.floor(Math.random() * CHARSET.length)];
-        const x = i * fontSize;
+        const x = i * columnWidth;
         const y = drops[i] * fontSize;
-        const glow = 0.46 + Math.sin(wave + i * 0.26) * 0.22;
+        const glow = 0.44 + Math.sin(wave + i * 0.22) * 0.18;
         const g = Math.floor(198 + glow * 36);
         const b = Math.floor(140 + glow * 58);
 
-        context.fillStyle = `rgba(92, ${g}, ${b}, 0.55)`;
+        context.fillStyle = `rgba(92, ${g}, ${b}, 0.44)`;
         context.fillText(char, x, y);
 
-        if (y > height && Math.random() > 0.976) {
+        if (y > height && Math.random() > 0.992) {
           drops[i] = 0;
         } else {
-          drops[i] += 0.78 + Math.random() * 0.62;
+          drops[i] += 0.25 + Math.random() * 0.2;
         }
       }
 
@@ -76,9 +90,9 @@ export function MatrixRain(): JSX.Element | null {
       window.removeEventListener('resize', resize);
       window.cancelAnimationFrame(frameId);
     };
-  }, [reducedMotion]);
+  }, [reducedMotion, lowPowerDevice]);
 
-  if (reducedMotion) return null;
+  if (reducedMotion || lowPowerDevice) return null;
 
   return <canvas ref={canvasRef} className="matrix-rain" aria-hidden="true" />;
 }

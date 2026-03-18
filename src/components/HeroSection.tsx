@@ -1,14 +1,16 @@
 import { lazy, Suspense } from 'react';
-import type { Profile } from '../types/content';
+import { IconGlyph } from './IconGlyph';
+import type { Profile, SocialLink } from '../types/content';
 
 const HeroScene = lazy(() => import('./HeroScene'));
 
 interface HeroSectionProps {
   profile: Profile;
+  socialLinks: SocialLink[];
   enable3D: boolean;
 }
 
-export function HeroSection({ profile, enable3D }: HeroSectionProps): JSX.Element {
+export function HeroSection({ profile, socialLinks, enable3D }: HeroSectionProps): JSX.Element {
   return (
     <section id="home" className="hero section-wrap" data-reveal>
       <div className="hero-copy" data-reveal>
@@ -30,6 +32,14 @@ export function HeroSection({ profile, enable3D }: HeroSectionProps): JSX.Elemen
           <a href="#resume" className="btn btn-ghost">
             Resume
           </a>
+        </div>
+
+        <div className="hero-social">
+          {socialLinks.map((link) => (
+            <a key={link.url} href={link.url} target="_blank" rel="noreferrer" aria-label={link.label}>
+              <IconGlyph icon={link.icon} />
+            </a>
+          ))}
         </div>
       </div>
 

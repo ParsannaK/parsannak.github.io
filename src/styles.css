@@ -73,7 +73,7 @@ img {
   inset: 0;
   z-index: -4;
   pointer-events: none;
-  opacity: 0.24;
+  opacity: 0.17;
   mix-blend-mode: screen;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1));
 }
@@ -83,9 +83,7 @@ img {
   inset: -10%;
   z-index: -3;
   pointer-events: none;
-  transition:
-    transform 160ms linear,
-    opacity 800ms ease;
+  transition: opacity 800ms ease;
 }
 
 .starfield-a {
@@ -98,8 +96,9 @@ img {
     radial-gradient(1px 1px at 70% 64%, rgba(169, 235, 255, 0.55), transparent),
     radial-gradient(1.2px 1.2px at 82% 16%, rgba(210, 248, 255, 0.6), transparent),
     radial-gradient(1px 1px at 90% 74%, rgba(255, 208, 178, 0.5), transparent);
-  transform: translate(var(--star-a-x), var(--star-a-y));
-  animation: twinkleA 7.2s ease-in-out infinite alternate;
+  animation:
+    twinkleA 7.2s ease-in-out infinite alternate,
+    driftA 48s ease-in-out infinite alternate;
 }
 
 .starfield-b {
@@ -111,8 +110,9 @@ img {
     radial-gradient(1.3px 1.3px at 64% 30%, rgba(255, 179, 152, 0.52), transparent),
     radial-gradient(1px 1px at 78% 86%, rgba(170, 235, 255, 0.5), transparent),
     radial-gradient(1.4px 1.4px at 86% 46%, rgba(225, 250, 255, 0.56), transparent);
-  transform: translate(var(--star-b-x), var(--star-b-y));
-  animation: twinkleB 9.5s ease-in-out infinite alternate;
+  animation:
+    twinkleB 9.5s ease-in-out infinite alternate,
+    driftB 58s ease-in-out infinite alternate;
 }
 
 .app-shell::before {
@@ -124,15 +124,15 @@ img {
   background:
     radial-gradient(circle at var(--pointer-soft-a-x) var(--pointer-soft-a-y), rgba(129, 243, 255, 0.11), transparent 50%),
     radial-gradient(circle at var(--pointer-soft-b-x) var(--pointer-soft-b-y), rgba(255, 150, 111, 0.09), transparent 46%);
+  animation: auraDrift 34s ease-in-out infinite alternate;
 }
 
 .ambient {
   position: fixed;
   inset: auto;
   z-index: -1;
-  filter: blur(80px);
+  filter: blur(68px);
   pointer-events: none;
-  transition: transform 120ms linear;
 }
 
 .ambient-a {
@@ -142,7 +142,7 @@ img {
   height: 26rem;
   border-radius: 999px;
   background: rgba(80, 210, 255, 0.44);
-  transform: translate(var(--pointer-shift-x), var(--pointer-shift-y));
+  animation: ambientFloatA 22s ease-in-out infinite alternate;
 }
 
 .ambient-b {
@@ -152,7 +152,7 @@ img {
   height: 22rem;
   border-radius: 42% 58% 60% 40% / 40% 56% 44% 60%;
   background: rgba(255, 130, 97, 0.38);
-  transform: translate(var(--pointer-shift-x-neg), var(--pointer-shift-y-neg));
+  animation: ambientFloatB 28s ease-in-out infinite alternate;
 }
 
 .site-header {
@@ -323,6 +323,40 @@ main {
   gap: 0.7rem;
 }
 
+.hero-social {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.hero-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(160, 182, 240, 0.36);
+  background: rgba(16, 30, 64, 0.72);
+  color: #dbe8ff;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.hero-social a:hover {
+  border-color: rgba(128, 221, 255, 0.74);
+  box-shadow: 0 0 18px rgba(101, 201, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.hero-social svg {
+  width: 1rem;
+  height: 1rem;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -479,12 +513,16 @@ main {
   margin-top: 1.6rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 1rem;
 }
 
 .project-card {
   --tilt-x: 0deg;
   --tilt-y: 0deg;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   border-radius: 1.1rem;
   border: 1px solid var(--line);
   background: var(--panel);
@@ -550,7 +588,8 @@ main {
 }
 
 .project-actions {
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
   padding-bottom: 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -625,12 +664,12 @@ main {
   border-radius: 1rem;
   background: rgba(12, 20, 45, 0.84);
   overflow: hidden;
-  min-height: 560px;
+  min-height: 680px;
 }
 
 .resume-preview object {
   width: 100%;
-  min-height: 560px;
+  min-height: 680px;
 }
 
 .resume-preview p {
@@ -712,6 +751,51 @@ main {
   }
 }
 
+@keyframes driftA {
+  0% {
+    transform: translate3d(-0.5%, 0.6%, 0);
+  }
+  100% {
+    transform: translate3d(0.8%, -0.5%, 0);
+  }
+}
+
+@keyframes driftB {
+  0% {
+    transform: translate3d(0.6%, -0.4%, 0);
+  }
+  100% {
+    transform: translate3d(-0.7%, 0.5%, 0);
+  }
+}
+
+@keyframes ambientFloatA {
+  0% {
+    transform: translate3d(-8px, 6px, 0);
+  }
+  100% {
+    transform: translate3d(14px, -10px, 0);
+  }
+}
+
+@keyframes ambientFloatB {
+  0% {
+    transform: translate3d(9px, -7px, 0);
+  }
+  100% {
+    transform: translate3d(-12px, 10px, 0);
+  }
+}
+
+@keyframes auraDrift {
+  0% {
+    transform: translate3d(-1.2%, 0.7%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(1.2%, -0.8%, 0) scale(1.02);
+  }
+}
+
 @media (max-width: 980px) {
   .site-header {
     border-radius: 1rem;
@@ -758,7 +842,7 @@ main {
 
   .resume-preview,
   .resume-preview object {
-    min-height: 480px;
+    min-height: 560px;
   }
 }
 
@@ -782,7 +866,7 @@ main {
 
   .resume-preview,
   .resume-preview object {
-    min-height: 420px;
+    min-height: 500px;
   }
 
   .matrix-rain {

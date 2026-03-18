@@ -10,7 +10,7 @@ export function ExperienceSection({ items }: ExperienceSectionProps): JSX.Elemen
     <section id="experience" className="section-wrap" data-reveal>
       <div className="section-title-block">
         <p className="eyebrow">Experience</p>
-        <h2>How I Work With Teams</h2>
+        <h2> Work & Leadership</h2>
       </div>
 
       <div className="timeline">

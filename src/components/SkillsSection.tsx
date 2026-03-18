@@ -10,7 +10,7 @@ export function SkillsSection({ skills }: SkillsSectionProps): JSX.Element {
     <section id="skills" className="section-wrap" data-reveal>
       <div className="section-title-block">
         <p className="eyebrow">Skills</p>
-        <h2>Tools I Use To Build and Ship</h2>
+        <h2>My Tech Stack</h2>
       </div>
 
       <div className="skills-grid">

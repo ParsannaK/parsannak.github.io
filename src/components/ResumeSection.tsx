@@ -9,7 +9,7 @@ export function ResumeSection({ resume }: ResumeSectionProps): JSX.Element {
     <section id="resume" className="section-wrap" data-reveal>
       <div className="section-title-block">
         <p className="eyebrow">Resume</p>
-        <h2>Recruiter-Ready Snapshot</h2>
+        <h2>Professional Resume</h2>
       </div>
 
       <div className="resume-actions" data-reveal>
